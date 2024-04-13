@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
 <body>
     <header>Weather Dashboard</header>
+    <main>
+        <nav>
+            <h1>Search for a City</h1>
+            <form action="">
+                <input type="text" placeholder="Search" id="searchInput">
+                <button type="submit" id="searchButton">Search</button>
+            </form>
+            <div id="searchHistory">
+
+            </div>
+        </nav>
+        <section id="weatherDisplay">
+            <div id="currentWeather">
+
+            </div>
+            <div id="futureWeather">
+
+            </div>
+        </section>
     
+
+    </main>
 
 <script src="./assets/script.js"></script>    
 </body>

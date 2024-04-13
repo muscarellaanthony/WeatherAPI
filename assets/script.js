@@ -1,9 +1,29 @@
-const weatherAPIKey = '511954d1c4cc056059eabc45e69ef6f6'
-const city = 'london'
-const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherAPIKey}`;
+const weatherAPIKey = '511954d1c4cc056059eabc45e69ef6f6';
+const currentWeather = document.getElementById('currentWeather');
+const cityInput = document.getElementById('searchInput');
+const weatherElement = document.getElementById('weatherDisplay');
+const searchButton = document.getElementById('searchButton');
+
+const formSubmitHandler = function (event) {
+    event.preventDefault();
+  
+    const city = cityInput.value.trim();
+  
+    if (city) {
+      weatherSearch(city);
+  
+      weatherElement.textContent = '';
+      cityInput.value = '';
+    } else {
+      alert('Please enter city.');
+    }
+  };
+
+
 
 // function to call api and retrieve data
-const weatherSearch = function () {
+const weatherSearch = function (city) {
+    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherAPIKey}`;
     // fetch api
     fetch(queryURL)
         .then(function (response) {
@@ -14,19 +34,17 @@ const weatherSearch = function () {
                     .then(function (data) {
                         console.log(data)
                         // send the date to the display function
-                        displayData(data)
+                        displayWeather(data)
                     })
             } else {
                 // send error alers if response failed
-                alert(`Error:${response.statusText}`);
+                alert(`Error: ${response.statusText}`);
             }
         })
 }
 
-const displayData = function (data){
-    
+const displayWeather = function (data){
+
 }
 
-
-
-weatherSearch()
+searchButton.addEventListener('click', formSubmitHandler)

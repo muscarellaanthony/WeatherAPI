@@ -1,4 +1,28 @@
 header{
     text-align: center;
-    background-color: aquamarine;
+    background-color: rgb(59, 105, 231);
+    font-size: 40px;
+    color: azure;
+}
+
+main{
+    display: flex;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    border: solid red 2px;
+    flex-grow: 1;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+section{
+    display: flex;
+    border: solid black 2px;
+    flex-grow: 4;
 }
