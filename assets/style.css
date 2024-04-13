@@ -13,7 +13,7 @@ nav{
     display: flex;
     flex-direction: column;
     border: solid red 2px;
-    flex-grow: 1;
+    width: 30%;
 }
 
 form{
@@ -24,5 +24,17 @@ form{
 section{
     display: flex;
     border: solid black 2px;
-    flex-grow: 4;
+    width: 70%;
 }
+
+h2{
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+h3{
+    margin: 10px;
+}
+
+
