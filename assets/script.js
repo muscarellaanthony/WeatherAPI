@@ -23,7 +23,7 @@ const formSubmitHandler = function (event) {
 
 // function to call api and retrieve data
 const weatherSearch = function (city) {
-    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherAPIKey}`;
+    const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherAPIKey}`;
     // fetch api
     fetch(queryURL)
         .then(function (response) {
@@ -35,6 +35,7 @@ const weatherSearch = function (city) {
                         console.log(data)
                         // send the date to the display function
                         displayWeather(data)
+                        forecastSearch(city)
                     })
             } else {
                 // send error alers if response failed
@@ -51,7 +52,7 @@ const displayWeather = function (data){
 
     cityNameEl.textContent = `${data.name} 4/13/2024`;
     const cityTemp = (data.main.temp - 273.15) * (9/5) + 32;
-    cityTempEl.textContent = `Temp: ${cityTemp} F`
+    cityTempEl.textContent = `Temp: ${cityTemp.toFixed(2)} F`
     cityWindEl.textContent = `Wind: ${data.wind.speed} MPH`
     cityHumidityEl.textContent = `Humidity: ${data.main.humidity} %`
 
@@ -62,6 +63,28 @@ const displayWeather = function (data){
 
 
 }
+
+const forecastSearch = function (city){
+    const queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weatherAPIKey}`;
+
+    fetch(queryURL)
+        .then(function (response) {
+            // check to see the response returned successfully
+            if (response.ok) {
+                //parse the data
+                response.json()
+                    .then(function (data) {
+                        console.log(data)
+                        // send the date to the display function
+                    })
+            } else {
+                // send error alers if response failed
+                alert(`Error: ${response.statusText}`);
+            }
+        })
+
+}
+
 weatherSearch('london')
 
 searchButton.addEventListener('click', formSubmitHandler)
