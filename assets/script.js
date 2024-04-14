@@ -35,7 +35,7 @@ const weatherSearch = function (city) {
             if (response.ok) {
                 clearDiv();
                 subtitleDisplay();
-                pastCities.push(city);
+                pastCitiesArrayHandler(city);
                 localStorage.setItem('cities',(JSON.stringify(pastCities)))
                 searchHistory()
                 //parse the data
@@ -204,7 +204,24 @@ const capitalizeCity = function(){
     return capitalCity;
 }
 
+const searchHistoryHandler = function(event){
+    const city = event.target.getAttribute('data-content')
+
+    if (city){
+        weatherSearch(city)
+    }
+}
+
+const pastCitiesArrayHandler = function(city){
+    if (pastCities.includes(city)){
+        return
+    } else{
+        pastCities.push(city)
+    }
+}
+
 searchHistory()
 
 searchButton.addEventListener('click', formSubmitHandler)
+searchHistoryElement.addEventListener('click', searchHistoryHandler)
 
