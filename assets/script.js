@@ -5,15 +5,15 @@ const weatherElement = document.getElementById('currentWeather');
 const forecastElement = document.getElementById('futureWeather')
 const searchButton = document.getElementById('searchButton');
 const subtitle = document.getElementById('subtitle')
+const searchHistoryElement = document.getElementById('searchHistory')
+let pastCities = JSON.parse(localStorage.getItem('cities')) || [];
 
 const formSubmitHandler = function (event) {
     event.preventDefault();
 
-    const city = cityInput.value.trim();
+    const city = capitalizeCity()
 
     if (city) {
-        clearDiv();
-        subtitleDisplay()
         weatherSearch(city);
 
 
@@ -31,8 +31,13 @@ const weatherSearch = function (city) {
     // fetch api
     fetch(queryURL)
         .then(function (response) {
-            // check to see the respons returned successfully
+            // check to see the that the city was found
             if (response.ok) {
+                clearDiv();
+                subtitleDisplay();
+                pastCities.push(city);
+                localStorage.setItem('cities',(JSON.stringify(pastCities)))
+                searchHistory()
                 //parse the data
                 response.json()
                     .then(function (data) {
@@ -177,7 +182,29 @@ const clearDiv = function () {
 
 const subtitleDisplay = function(){
     subtitle.style.display = 'block'
+    currentWeather.style.border = 'solid black 1px'
 }
+
+const searchHistory = function(){
+    searchHistoryElement.innerHTML = '';
+    for(const city of pastCities){
+        historyCard = document.createElement('button')
+        historyCard.textContent = city
+        historyCard.setAttribute('id','searchCard')
+        historyCard.setAttribute('data-content', city)
+        searchHistoryElement.appendChild(historyCard)
+    }
+}
+
+const capitalizeCity = function(){
+    const city = cityInput.value.trim();
+    const firstLetter = city.charAt(0).toUpperCase();
+    const remainingLetters = city.slice(1);
+    const capitalCity = firstLetter + remainingLetters;
+    return capitalCity;
+}
+
+searchHistory()
 
 searchButton.addEventListener('click', formSubmitHandler)
 

@@ -15,11 +15,42 @@ nav{
     flex-direction: column;
     width: 30%;
     margin-left: 20px;
+    row-gap: 15px;
 }
 
 form{
     display: flex;
     flex-direction: column;
+    row-gap: 10px;
+}
+
+#searchHistory{
+    border-top: solid grey 1px;
+}
+
+#searchCard{
+    width: 100%;
+    margin-top: 15px;
+}
+
+#searchInput{
+    height: 40px;
+    font-size: 20px;
+}
+
+#searchButton{
+    height: 30px;
+    background-color:  rgb(59, 105, 231);
+    color: azure;
+}
+
+#searchButton:hover{
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 20px;
 }
 
 section{
@@ -28,10 +59,6 @@ section{
     width: 70%;
     margin-right: 100px;
     margin-left: 30px;
-}
-
-#currentWeather{
-    border: solid black 1px;
 }
 
 h2{
