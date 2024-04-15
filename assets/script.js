@@ -112,7 +112,7 @@ const forecastSearch = function (city) {
 // adds elements to html that display the 5 day forcast info
 const displayForecast = function (data) {
     // loop though the 5 days listed in the api data
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 0; i <= 4; i++) {
         // create a div for each card
         const forecastCard = document.createElement('div')
         //add attributes to style with in css
@@ -154,8 +154,8 @@ const displayForecast = function (data) {
 const forecastDate = function (i) {
     //initlaize with todays date 
     let today = dayjs();
-    //add i amount of days to todays date. i is given from diplayForecast funtion iterations.
-    let forecastDay = today.add(i, 'day').format('MM/DD/YYYY');
+    //add i amount of days to todays date, add one because i starts at 0. i is given from diplayForecast funtion iterations.
+    let forecastDay = today.add(i + 1, 'day').format('MM/DD/YYYY');
     return forecastDay;
 }
 
@@ -235,7 +235,7 @@ const searchHistory = function(){
     }
 }
 
-//function to capitalize first letter of each city in the pastCities array.... extra credit??? :)
+//function to capitalize first letter of each city collected by the form.... extra credit??? :)
 const capitalizeCity = function(){
     //set city to form input value
     const city = cityInput.value.trim();

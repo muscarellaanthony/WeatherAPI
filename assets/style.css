@@ -95,3 +95,67 @@ h3{
     padding-top: 5px;
 }
 
+@media screen and (max-width: 790px) {
+    h1 {
+        font-size: 15px;
+        text-align: center;
+    }
+    #searchInput{
+        height: 20px;
+        font-size: 15px;
+    }
+    #searchButton{
+        height: 20px;
+    }
+    main{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    section{
+        margin: 0px;
+        margin-top: 10px;
+    }
+    nav{
+        margin: 0px;
+    }
+    #currentWeather{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 720px){
+    nav{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    #futureWeather{
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    #card{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 12px;
+        text-align: center;
+    }
+    #searchHistory{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    form{
+        width: 50%;
+    }
+    #searchCard{
+        text-align: center;
+        width: 33%;
+        font-size: 12px;
+    }
+
+}
